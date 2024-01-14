@@ -1,5 +1,7 @@
 "use client";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Link from "next/link";
+
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 interface Props {
@@ -11,41 +13,41 @@ const MovieListSwitch = ({ selectedList }: Props) => {
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  const onclickPopular = () => {
-    const params = new URLSearchParams(searchParams);
-    params.set("filter_by", "popular");
-    replace(`${pathname}?${params.toString()}`);
-  };
-  const onclickNowPlaying = () => {
-    const params = new URLSearchParams(searchParams);
-    params.set("filter_by", "now_playing");
-    replace(`${pathname}?${params.toString()}`);
-  };
-  const onclickUpcoming = () => {
-    const params = new URLSearchParams(searchParams);
-    params.set("filter_by", "upcoming");
-    replace(`${pathname}?${params.toString()}`);
-  };
-  const onclickTop = () => {
-    const params = new URLSearchParams(searchParams);
-    params.set("filter_by", "top_rated");
-    replace(`${pathname}?${params.toString()}`);
-  };
+  // const onclickPopular = () => {
+  //   const params = new URLSearchParams(searchParams);
+  //   params.set("filter_by", "popular");
+  //   replace(`${pathname}?${params.toString()}`);
+  // };
+  // const onclickNowPlaying = () => {
+  //   const params = new URLSearchParams(searchParams);
+  //   params.set("filter_by", "now_playing");
+  //   replace(`${pathname}?${params.toString()}`);
+  // };
+  // const onclickUpcoming = () => {
+  //   const params = new URLSearchParams(searchParams);
+  //   params.set("filter_by", "upcoming");
+  //   replace(`${pathname}?${params.toString()}`);
+  // };
+  // const onclickTop = () => {
+  //   const params = new URLSearchParams(searchParams);
+  //   params.set("filter_by", "top_rated");
+  //   replace(`${pathname}?${params.toString()}`);
+  // };
 
   return (
     <Tabs defaultValue={selectedList}>
       <TabsList>
-        <TabsTrigger onClick={onclickNowPlaying} value="now_playing">
-          Now Playing
+        <TabsTrigger value="now_playing">
+          <Link href="/movies/lists/nowplaying">Now Playing</Link>
         </TabsTrigger>
-        <TabsTrigger onClick={onclickPopular} value="popular">
-          Popular
+        <TabsTrigger value="popular">
+          <Link href="/movies/lists/popular">Popular</Link>
         </TabsTrigger>
-        <TabsTrigger onClick={onclickUpcoming} value="upcoming">
-          Upcoming
+        <TabsTrigger value="upcoming">
+          <Link href="/movies/lists/upcoming">Upcoming</Link>
         </TabsTrigger>
-        <TabsTrigger onClick={onclickTop} value="top_rated">
-          Top
+        <TabsTrigger value="top_rated">
+          <Link href="/movies/lists/top">Top</Link>
         </TabsTrigger>
       </TabsList>
     </Tabs>

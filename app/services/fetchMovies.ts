@@ -19,7 +19,7 @@ export const fetchMovies = async (
   action: string,
   with_genres?: string,
   query?: string,
-  page?: number,
+  page?: number
 ) => {
   const options = {
     method: "GET",
@@ -43,7 +43,10 @@ export const fetchMovies = async (
   return res.data.results;
 };
 
-export const MovieList = async (MovieListAction: string, page?: number) => {
+export const MovieList = async (
+  MovieListAction: "now_playing" | "popular" | "upcoming" | "top_rated",
+  page?: number
+) => {
   const options = {
     method: "GET",
     headers: {
@@ -51,8 +54,8 @@ export const MovieList = async (MovieListAction: string, page?: number) => {
       Authorization: `Bearer ${process.env.TMDB_API_KEY!}`,
     },
     params: {
-      page: page
-    }
+      page: page,
+    },
   };
 
   const res = await axios.get<fetchResponse>(

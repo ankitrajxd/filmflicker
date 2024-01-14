@@ -14,7 +14,6 @@ interface Props {
 }
 
 export default function Home({ searchParams }: Props) {
-
   return (
     <div className="grid sm:grid-cols-5 grid-cols-1 md:mt-[3rem]">
       <div className="md:flex md:max-w-[120px] md:flex-col sm:gap-2 hidden my-3">
