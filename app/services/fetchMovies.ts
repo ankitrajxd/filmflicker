@@ -1,6 +1,8 @@
+"use server";
+
 import axios from "axios";
 
-interface Movie {
+export interface Movie {
   id: number;
   title: string;
   release_date: string;
@@ -17,6 +19,7 @@ export const fetchMovies = async (
   action: string,
   with_genres?: string,
   query?: string,
+  page?: number,
 ) => {
   const options = {
     method: "GET",
@@ -25,7 +28,7 @@ export const fetchMovies = async (
       Authorization: `Bearer ${process.env.TMDB_API_KEY!}`,
     },
     params: {
-      page: 1,
+      page: page,
       sort_by: "vote_count.desc",
       ...(action === "search" && { query: query }),
       with_genres: with_genres,
@@ -40,13 +43,16 @@ export const fetchMovies = async (
   return res.data.results;
 };
 
-export const MovieList = async (MovieListAction: string) => {
+export const MovieList = async (MovieListAction: string, page?: number) => {
   const options = {
     method: "GET",
     headers: {
       accept: "application/json",
       Authorization: `Bearer ${process.env.TMDB_API_KEY!}`,
     },
+    params: {
+      page: page
+    }
   };
 
   const res = await axios.get<fetchResponse>(
