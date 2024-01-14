@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FilmFlicker - Movie Discovery Web App
+
+Welcome to the *FilmFlicker* – your go-to platform for exploring movies! This web app is built with Next.js, TypeScript, Shadcn UI, Framer Motion for smooth page navigation, and powered by The Movie Database (TMDb) API.
+
+## Features
+
+- **Discover Movies:** Explore a vast collection of movies categorized by genres and more.
+- **Filter by Categories:** Filter movies by Now Playing, Popular, Top Rated, and Upcoming.
+- **Search Functionality:** Quickly find your favorite movies with the search feature.
+- **Detailed Movie Information:** Detailed pages for each movie, including cast, crew, reviews, and more (coming soon).
+- **Responsive Design:** Enjoy a seamless experience on various devices.
+
+## Technologies Used
+
+- **Next.js:** React framework for server-side rendering and static site generation.
+- **TypeScript:** Typed superset of JavaScript for enhanced code quality.
+- **Shadcn UI:** Stylish UI components for a modern look and feel.
+- **Framer Motion:** Add smooth animations for enhanced user experience.
+- **TMDb API:** The Movie Database API for fetching movie data.
 
 ## Getting Started
 
-First, run the development server:
+1. **Clone the Repository:**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   ```bash
+   git clone https://github.com/your-username/movie-discovery-web-app.git
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. **Install Dependencies**:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```bash
+   cd movie-discovery-web-app
+   npm install
 
-## Learn More
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+3. **Configure API Key:**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   Obtain an API key from TMDb and update it in your project.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+4. **Run the App:**
 
-## Deploy on Vercel
+   ```
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   Open http://localhost:3000 to view the app in your browser.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Contributing
+
+Contributions are welcome! Feel free to open issues, submit pull requests, or provide feedback.
+
+# License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
