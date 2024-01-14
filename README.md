@@ -1,6 +1,6 @@
 # FilmFlicker - Movie Discovery Web App
 
-Welcome to the *FilmFlicker* – your go-to platform for exploring movies! This web app is built with Next.js, TypeScript, Shadcn UI, Framer Motion for smooth page navigation, and powered by The Movie Database (TMDb) API.
+Welcome to the _FilmFlicker_ – your go-to platform for exploring movies! This web app is built with Next.js, TypeScript, Shadcn UI, Framer Motion for smooth page navigation, and powered by The Movie Database (TMDb) API.
 
 ## Features
 
@@ -23,14 +23,14 @@ Welcome to the *FilmFlicker* – your go-to platform for exploring movies! This 
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/your-username/movie-discovery-web-app.git
+   git clone https://github.com/isankitraj/FilmFlicker.git
 
    ```
 
 2. **Install Dependencies**:
 
    ```bash
-   cd movie-discovery-web-app
+   cd FilmFlicker
    npm install
 
    ```
