@@ -12,6 +12,7 @@ import {
 import styles from "./recommendedMovies.module.css";
 import { Badge } from "@/components/ui/badge";
 import RecommendedMoviesComponent from "./RecommendedMoviesComponent";
+import minutetohour from "@/app/services/minutetohour";
 
 interface Props {
   params: { id: string };
@@ -41,15 +42,17 @@ const MovieDetailPage = async ({ params }: Props) => {
             <li className="mb-7">{Movie.tagline}</li>
             <li>Release Date: {Movie.release_date}</li>
             <li>{Movie.vote_average.toFixed(1)}/10</li>
-            <li>{Movie.runtime}</li>
-            <li>{Movie.status}</li>
+            <li>{minutetohour(Movie.runtime)}</li>
+            <li>Status: {Movie.status}</li>
           </ul>
+
           <div className="flex gap-3 mb-7">
             {Movie.genres.map((g) => (
               <Badge key={g.id}>{g.name}</Badge>
             ))}
           </div>
 
+          <p>Available On</p>
           <div className="flex  gap-3 my-3">
             {MovieProviders["US"].rent?.map((r) => (
               <div key={r.provider_id}>
@@ -70,15 +73,15 @@ const MovieDetailPage = async ({ params }: Props) => {
         className={`flex flex-row overflow-x-scroll gap-5 mt-[4rem] ${styles.noScroll}`}
       >
         {MovieCast.map((cast) => (
-          <div key={cast.cast_id}>
-            <div className="w-[50px]">
+          <div key={cast.cast_id} className="">
+            <div className="w-[7rem]">
               <img
                 className=" object-cover rounded-lg"
                 src={`https://image.tmdb.org/t/p/w500/${cast.profile_path}`}
                 alt={cast.name}
               />
             </div>
-            <p className="text-sm mt-3">{cast.name}</p>
+            <p className="text-[13px] mt-3">{cast.name}</p>
             {/* <p>{cast.cast_id}</p> */}
           </div>
         ))}

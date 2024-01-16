@@ -50,6 +50,13 @@ interface fetchMovieVideosResponse {
   results: MovieVideo[];
 }
 
+const header = {
+  accept: "application/json",
+  Authorization: `Bearer ${process.env.TMDB_API_KEY!}`,
+};
+
+const endpoint = "https://api.themoviedb.org/3";
+
 export const fetchMovies = async (
   action: string,
   with_genres?: string,
@@ -59,8 +66,7 @@ export const fetchMovies = async (
   const options = {
     method: "GET",
     headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${process.env.TMDB_API_KEY!}`,
+      ...header,
     },
     params: {
       page: page,
@@ -71,7 +77,7 @@ export const fetchMovies = async (
   };
 
   const res = await axios.get<fetchResponse>(
-    `https://api.themoviedb.org/3/${action}/movie`,
+    `${endpoint}/${action}/movie`,
     options
   );
 
@@ -85,8 +91,7 @@ export const MovieList = async (
   const options = {
     method: "GET",
     headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${process.env.TMDB_API_KEY!}`,
+      ...header,
     },
     params: {
       page: page,
@@ -94,7 +99,7 @@ export const MovieList = async (
   };
 
   const res = await axios.get<fetchResponse>(
-    `https://api.themoviedb.org/3/movie/${MovieListAction}?language=en-US&page=1`,
+    `${endpoint}/movie/${MovieListAction}?language=en-US&page=1`,
     options
   );
 
@@ -106,8 +111,7 @@ export const GetMovieDetails = async (movieId: number) => {
   const options = {
     method: "GET",
     headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${process.env.TMDB_API_KEY!}`,
+      ...header,
     },
     params: {
       movie_id: movieId,
@@ -115,7 +119,7 @@ export const GetMovieDetails = async (movieId: number) => {
   };
 
   const res = await axios.get<MovieDetail>(
-    `https://api.themoviedb.org/3/movie/${movieId}`,
+    `${endpoint}/movie/${movieId}`,
     options
   );
 
@@ -127,8 +131,7 @@ export const GetMovieImages = async (movieId: number) => {
   const options = {
     method: "GET",
     headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${process.env.TMDB_API_KEY!}`,
+      ...header,
     },
     params: {
       movie_id: movieId,
@@ -136,7 +139,7 @@ export const GetMovieImages = async (movieId: number) => {
   };
 
   const res = await axios.get<fetchMovieImagesResponse>(
-    `https://api.themoviedb.org/3/movie/${movieId}/images`,
+    `${endpoint}/movie/${movieId}/images`,
     options
   );
 
@@ -150,8 +153,7 @@ export const GetMovieVideos = async (movieId: number) => {
   const options = {
     method: "GET",
     headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${process.env.TMDB_API_KEY!}`,
+      ...header,
     },
     params: {
       movie_id: movieId,
@@ -159,7 +161,7 @@ export const GetMovieVideos = async (movieId: number) => {
   };
 
   const res = await axios.get<fetchMovieVideosResponse>(
-    `https://api.themoviedb.org/3/movie/${movieId}/videos`,
+    `${endpoint}/movie/${movieId}/videos`,
     options
   );
 
@@ -213,7 +215,7 @@ export const GetMovieProviders = async (movieId: number) => {
   };
 
   const res = await axios.get<FetchMovieProvidersResponse>(
-    `https://api.themoviedb.org/3/movie/${movieId}/watch/providers`,
+    `${endpoint}/movie/${movieId}/watch/providers`,
     options
   );
 
@@ -233,7 +235,7 @@ export const GetRecommendedMovies = async (movieId: number) => {
   };
 
   const res = await axios.get<fetchResponse>(
-    `https://api.themoviedb.org/3/movie/${movieId}/recommendations`,
+    `${endpoint}/movie/${movieId}/recommendations`,
     options
   );
 
@@ -269,11 +271,11 @@ export const GetMovieReviews = async (movieId: number) => {
   };
 
   const res = await axios.get<fetchReviewsResponse>(
-    `https://api.themoviedb.org/3/movie/${movieId}/reviews`,
+    `${endpoint}/movie/${movieId}/reviews`,
     options
   );
 
-  return res.data.results;
+  return res.data.results.slice(0, 6);
 };
 
 // getting credits of a movie
@@ -300,7 +302,7 @@ export const GetMovieCredits = async (movieId: number) => {
   };
 
   const res = await axios.get<fetchCreditsResponse>(
-    `https://api.themoviedb.org/3/movie/${movieId}/credits`,
+    `${endpoint}/movie/${movieId}/credits`,
     options
   );
 
