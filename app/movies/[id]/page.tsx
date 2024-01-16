@@ -12,7 +12,7 @@ import {
 import styles from "./recommendedMovies.module.css";
 import { Badge } from "@/components/ui/badge";
 import RecommendedMoviesComponent from "./RecommendedMoviesComponent";
-import minutetohour from "@/app/services/minutetohour";
+import minutetohour from "@/app/services/minuteToHour";
 
 interface Props {
   params: { id: string };
