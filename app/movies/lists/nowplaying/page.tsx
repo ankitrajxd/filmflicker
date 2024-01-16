@@ -1,14 +1,17 @@
-import MovieCardGrid from "@/app/components/MovieCardGrid";
-import { MovieList } from "@/app/services/fetchMovies";
+import NowPlayingMovies from "./NowPlayingMovies";
 
 
-const nowPlayingPage = async () => {
+interface Props {
+  searchParams: {
+    page?: string;
+  }
+}
 
-
-    const Movies = await MovieList("now_playing")
-
+const nowPlayingPage = ({searchParams}: Props) => {
   return (
-    <MovieCardGrid Movies={Movies}/>
+    <>
+      <NowPlayingMovies page={parseInt(searchParams.page!)} />
+    </>
   );
 };
 

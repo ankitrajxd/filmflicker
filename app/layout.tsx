@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={`p-5 max-w-[1280px] mx-auto ${inter.className}`}>
         <AnimatedDiv>
           <NextTopLoader
-            color={"linear-gradient(26deg,#45caff 41%,#f41bff 47%)"}
+            color="violet"
           />
           <ThemeProvider attribute="class" defaultTheme="dark">
             <NavBar />
@@ -35,3 +35,6 @@ export default function RootLayout({
     </html>
   );
 }
+
+
+// color={"linear-gradient(26deg,#45caff 41%,#f41bff 47%)"}

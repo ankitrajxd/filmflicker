@@ -1,6 +1,7 @@
 "use server";
 
 import axios from "axios";
+import { Genre } from "../_genreList/GenreList";
 
 export interface Movie {
   id: number;
@@ -13,6 +14,40 @@ export interface Movie {
 interface fetchResponse {
   page: string;
   results: Movie[];
+}
+
+interface MovieDetail {
+  backdrop_path: string;
+  genres: Genre[];
+  overview: string;
+  poster_path: string;
+  release_date: string;
+  runtime: number;
+  status: string;
+  tagline: string;
+  title: string;
+  vote_average: number;
+  id: number;
+}
+
+interface MovieImage {
+  file_path: string;
+  aspect_ratio: number;
+}
+
+interface fetchMovieImagesResponse {
+  backdrops: MovieImage[];
+}
+
+interface MovieVideo {
+  name: string;
+  key: string;
+  type: string;
+  official: boolean;
+}
+
+interface fetchMovieVideosResponse {
+  results: MovieVideo[];
 }
 
 export const fetchMovies = async (
@@ -45,7 +80,7 @@ export const fetchMovies = async (
 
 export const MovieList = async (
   MovieListAction: "now_playing" | "popular" | "upcoming" | "top_rated",
-  page?: number
+  page: number
 ) => {
   const options = {
     method: "GET",
@@ -64,4 +99,210 @@ export const MovieList = async (
   );
 
   return res.data.results;
+};
+
+// get movie details
+export const GetMovieDetails = async (movieId: number) => {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.TMDB_API_KEY!}`,
+    },
+    params: {
+      movie_id: movieId,
+    },
+  };
+
+  const res = await axios.get<MovieDetail>(
+    `https://api.themoviedb.org/3/movie/${movieId}`,
+    options
+  );
+
+  return res.data;
+};
+
+// get movie Images
+export const GetMovieImages = async (movieId: number) => {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.TMDB_API_KEY!}`,
+    },
+    params: {
+      movie_id: movieId,
+    },
+  };
+
+  const res = await axios.get<fetchMovieImagesResponse>(
+    `https://api.themoviedb.org/3/movie/${movieId}/images`,
+    options
+  );
+
+  const limitedBackdrops = res.data.backdrops.slice(0, 4);
+
+  return limitedBackdrops;
+};
+
+// get movie Images
+export const GetMovieVideos = async (movieId: number) => {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.TMDB_API_KEY!}`,
+    },
+    params: {
+      movie_id: movieId,
+    },
+  };
+
+  const res = await axios.get<fetchMovieVideosResponse>(
+    `https://api.themoviedb.org/3/movie/${movieId}/videos`,
+    options
+  );
+
+  const videos = res.data.results.filter(
+    (video) =>
+      (video.name.toLowerCase().includes("official") &&
+        video.name.toLowerCase().includes("trailer")) ||
+      video.type.toLowerCase().includes("trailer")
+  );
+
+  return videos;
+};
+
+interface FetchMovieProvidersResponse {
+  id: number;
+  results: {
+    [countryCode: string]: {
+      link: string;
+      flatrate?: Array<{
+        logo_path: string;
+        provider_id: number;
+        provider_name: string;
+        display_priority: number;
+      }>;
+      buy?: Array<{
+        logo_path: string;
+        provider_id: number;
+        provider_name: string;
+        display_priority: number;
+      }>;
+      rent?: Array<{
+        logo_path: string;
+        provider_id: number;
+        provider_name: string;
+        display_priority: number;
+      }>;
+    };
+  };
+}
+
+export const GetMovieProviders = async (movieId: number) => {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.TMDB_API_KEY!}`,
+    },
+    params: {
+      movie_id: movieId,
+    },
+  };
+
+  const res = await axios.get<FetchMovieProvidersResponse>(
+    `https://api.themoviedb.org/3/movie/${movieId}/watch/providers`,
+    options
+  );
+
+  return res.data.results;
+};
+
+export const GetRecommendedMovies = async (movieId: number) => {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.TMDB_API_KEY!}`,
+    },
+    params: {
+      movie_id: movieId,
+    },
+  };
+
+  const res = await axios.get<fetchResponse>(
+    `https://api.themoviedb.org/3/movie/${movieId}/recommendations`,
+    options
+  );
+
+  return res.data.results;
+};
+
+interface Review {
+  author: string;
+  author_details: Array<{
+    name: string;
+    avatar_path: string;
+  }>;
+  content: string;
+  id: string;
+}
+
+interface fetchReviewsResponse {
+  page: number;
+  results: Review[];
+}
+
+// Fetch Movie Reviews
+export const GetMovieReviews = async (movieId: number) => {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.TMDB_API_KEY!}`,
+    },
+    params: {
+      movie_id: movieId,
+    },
+  };
+
+  const res = await axios.get<fetchReviewsResponse>(
+    `https://api.themoviedb.org/3/movie/${movieId}/reviews`,
+    options
+  );
+
+  return res.data.results;
+};
+
+// getting credits of a movie
+
+interface fetchCreditsResponse {
+  cast: Array<{
+    name: string;
+    profile_path: string;
+    cast_id: number;
+    character: string;
+  }>;
+}
+
+export const GetMovieCredits = async (movieId: number) => {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.TMDB_API_KEY!}`,
+    },
+    params: {
+      movie_id: movieId,
+    },
+  };
+
+  const res = await axios.get<fetchCreditsResponse>(
+    `https://api.themoviedb.org/3/movie/${movieId}/credits`,
+    options
+  );
+
+  return res.data.cast;
 };

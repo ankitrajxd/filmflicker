@@ -1,6 +1,5 @@
 import Heading from "@/app/Heading";
 import MovieListSwitch from "@/app/MovieListSwitch";
-import SearchInput from "@/app/SearchInput";
 import GenreList from "@/app/_genreList/GenreList";
 import React, { ReactNode } from "react";
 
@@ -20,7 +19,7 @@ const listLayout = ({ children }: Props) => {
           <Heading />
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
             <MovieListSwitch />
-            <SearchInput />
+            {/* <SearchInput /> */}
           </div>
         </div>
         {children}

@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
 import styles from "./NavBar.module.css";
@@ -17,12 +15,12 @@ const NavBar = () => {
       <Menubar className="w-[80%] ml-2 hidden sm:inline-flex border-2">
         <MenubarMenu>
           <MenubarTrigger>
-            <Link href={"/"}>Home</Link>
+            <Link href={"/"}>Movies</Link>
           </MenubarTrigger>
         </MenubarMenu>
         <MenubarMenu>
           <MenubarTrigger>
-            <Link href={"/anime"}>Anime</Link>
+            <Link href={"/anime"}>TV Shows</Link>
           </MenubarTrigger>
         </MenubarMenu>
         <MenubarMenu>

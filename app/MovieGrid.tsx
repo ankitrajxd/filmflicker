@@ -20,7 +20,8 @@ const MovieGrid = async ({ query, filter_by, genre, page }: Props) => {
   let Movies;
   if (query) {
     Movies = await fetchMovies("search", undefined, query);
-  } else if (genre) {
+  } 
+  else if (genre) {
     Movies = await fetchMovies("discover", genre);
   } else if (page) {
     Movies = await fetchMovies("discover", undefined, undefined, page);
