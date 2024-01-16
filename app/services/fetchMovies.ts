@@ -80,7 +80,7 @@ export const fetchMovies = async (
 
 export const MovieList = async (
   MovieListAction: "now_playing" | "popular" | "upcoming" | "top_rated",
-  page: number
+  page?: number
 ) => {
   const options = {
     method: "GET",
