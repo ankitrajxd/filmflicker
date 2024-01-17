@@ -5,6 +5,7 @@ import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import NavBar from "./NavBar";
 import AnimatedDiv from "./components/AnimatedDiv";
+import FlareCursor from "./components/FlareCursor";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`p-5 max-w-[1280px] mx-auto ${inter.className}`}>
         <AnimatedDiv>
+          <FlareCursor/>
           <NextTopLoader
             color="violet"
           />
