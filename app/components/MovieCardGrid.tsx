@@ -29,8 +29,8 @@ const MovieCardGrid = ({ Movies }: Props) => {
               ></img>
             </CardHeader>
             <CardContent className="mt-2">
-              <CardTitle className="text-base mb-1">
-                {movie.title}
+              <CardTitle className="text-base mb-3">
+                <Link href={`/movies/${movie.id}`}>{movie.title}</Link>
                 <Badge className="mx-2" variant="outline">
                   {movie.release_date.split("-")[0]}
                 </Badge>
