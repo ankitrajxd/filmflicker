@@ -31,7 +31,7 @@ const MovieCardGrid = ({ Movies }: Props) => {
             <CardContent className="mt-2">
               <CardTitle className="text-base mb-3">
                 <Link href={`/movies/${movie.id}`}>{movie.title}</Link>
-                <Badge className="mx-2" variant="outline">
+                <Badge className="mx-2" variant="secondary">
                   {movie.release_date.split("-")[0]}
                 </Badge>
               </CardTitle>
