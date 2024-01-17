@@ -49,7 +49,7 @@ const MovieDetailPage = async ({ params }: Props) => {
             <li>Status: {Movie.status}</li>
           </ul>
 
-          <div className="flex gap-3 mb-7">
+          <div className="flex flex-wrap gap-3 mb-7">
             {Movie.genres.map((g) => (
               <Badge key={g.id}>{g.name}</Badge>
             ))}
