@@ -16,9 +16,10 @@ const MovieCardGrid = ({ Movies }: Props) => {
     <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 mt-3">
       {Movies?.map((movie) => (
         <AnimatedDiv className="break-inside-avoid" key={movie.id}>
-          <Card className="mb-4 border-2">
+          <Card className="mb-4 border-2 relative overflow-hidden">
             <CardHeader style={{ overflow: "hidden" }}>
               <img
+                className="md:hover:scale-[1.125] transition-transform ease-in-out duration-300"
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                 alt="anime-img"
                 style={{
@@ -39,7 +40,10 @@ const MovieCardGrid = ({ Movies }: Props) => {
                 <Button className="border-2" size="sm" variant="outline">
                   <Link href={`/movies/${movie.id}`}>Read More</Link>
                 </Button>
-                <Badge variant="outline">
+                <Badge
+                  className="absolute top-3 left-3 bg-transparent backdrop-blur-md font-extrabold text-sm"
+                  variant="secondary"
+                >
                   ❤️ {movie.vote_average.toFixed(1)}
                 </Badge>
               </div>
