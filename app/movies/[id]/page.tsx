@@ -52,9 +52,9 @@ const MovieDetailPage = async ({ params }: Props) => {
             ))}
           </div>
 
-          <p>Available On</p>
+          {MovieProviders["US"] && <p>Available On</p>}
           <div className="flex  gap-3 my-3">
-            {MovieProviders["US"].rent?.map((r) => (
+            {MovieProviders["US"]?.rent?.map((r) => (
               <div key={r.provider_id}>
                 {/* <p key={r.provider_id}>{r.provider_name}</p> */}
                 <img
