@@ -13,6 +13,9 @@ import styles from "./recommendedMovies.module.css";
 import { Badge } from "@/components/ui/badge";
 import RecommendedMoviesComponent from "./RecommendedMoviesComponent";
 import minutetohour from "@/app/services/minuteToHour";
+import { MdVerifiedUser } from "react-icons/md";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
+import { MdVerified } from "react-icons/md";
 
 interface Props {
   params: { id: string };
@@ -26,8 +29,6 @@ const MovieDetailPage = async ({ params }: Props) => {
   const RecommendedMovies = await GetRecommendedMovies(parseInt(params.id));
   const MovieReviews = await GetMovieReviews(parseInt(params.id));
   const MovieCast = await GetMovieCredits(parseInt(params.id));
-
-
 
   return (
     <AnimatedDiv className="md:my-[4rem]">
@@ -55,7 +56,7 @@ const MovieDetailPage = async ({ params }: Props) => {
           </div>
 
           {MovieProviders["US"] && <p>Available On</p>}
-          <div className="flex  gap-3 my-3">
+          <div className="flex flex-wrap gap-3 my-3">
             {MovieProviders["US"]?.rent?.map((r) => (
               <div key={r.provider_id}>
                 {/* <p key={r.provider_id}>{r.provider_name}</p> */}
@@ -83,7 +84,10 @@ const MovieDetailPage = async ({ params }: Props) => {
                 alt={cast.name}
               />
             </div>
-            <p className="text-[13px] mt-3">{cast.name}</p>
+            <p className="text-[14px] mt-3">{cast.name}</p>
+            <p className="text-[12px] text-slate-400">
+              {cast.character.split("/")[0]}
+            </p>
             {/* <p>{cast.cast_id}</p> */}
           </div>
         ))}
@@ -111,7 +115,10 @@ const MovieDetailPage = async ({ params }: Props) => {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
         {MovieReviews.map((review) => (
           <div key={review.id} className="border-2 p-2 rounded-md">
-            <p className="font-extrabold mb-3"> {review.author}</p>
+            <div className="flex gap-1 items-center mb-3">
+              <p className="font-extrabold text-[#45caff]">{review.author}</p>
+              <MdVerified />
+            </div>
             <p>{review.content.slice(0, 200)}</p>
           </div>
         ))}
