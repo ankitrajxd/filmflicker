@@ -41,7 +41,7 @@ const MovieCardGrid = ({ Movies }: Props) => {
                   <Link href={`/movies/${movie.id}`}>Read More</Link>
                 </Button>
                 <Badge
-                  className="absolute top-3 left-3 bg-transparent backdrop-blur-md font-extrabold text-sm"
+                  className="absolute top-3 left-3 bg-slate-800 backdrop-blur-md font-bold"
                   variant="secondary"
                 >
                   ❤️ {movie.vote_average.toFixed(1)}
