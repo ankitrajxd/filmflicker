@@ -1,11 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { MovieList, fetchMovies } from "./services/fetchMovies";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
-import AnimatedDiv from "./components/AnimatedDiv";
 import LoadNext from "./LoadNext";
 import MovieCardGrid from "./components/MovieCardGrid";
 

@@ -13,8 +13,6 @@ import styles from "./recommendedMovies.module.css";
 import { Badge } from "@/components/ui/badge";
 import RecommendedMoviesComponent from "./RecommendedMoviesComponent";
 import minutetohour from "@/app/services/minuteToHour";
-import { MdVerifiedUser } from "react-icons/md";
-import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { MdVerified } from "react-icons/md";
 
 interface Props {
