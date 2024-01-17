@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Genre } from "./GenreList";
+import { Genre } from "../services/fetchMovies";
 
 interface Props {
   data: Genre[];

@@ -1,7 +1,5 @@
 "use server";
-
 import axios from "axios";
-import { Genre } from "../_genreList/GenreList";
 
 export interface Movie {
   id: number;
@@ -9,6 +7,11 @@ export interface Movie {
   release_date: string;
   vote_average: number;
   poster_path: string;
+}
+
+export interface Genre {
+  id: number;
+  name: string;
 }
 
 interface fetchResponse {
@@ -57,6 +60,9 @@ const header = {
 
 const endpoint = "https://api.themoviedb.org/3";
 
+
+// fetching movies
+
 export const fetchMovies = async (
   action: string,
   with_genres?: string,
@@ -84,6 +90,11 @@ export const fetchMovies = async (
   return res.data.results;
 };
 
+
+
+
+// fetching movie lists
+
 export const MovieList = async (
   MovieListAction: "now_playing" | "popular" | "upcoming" | "top_rated",
   page?: number
@@ -106,6 +117,9 @@ export const MovieList = async (
   return res.data.results;
 };
 
+
+
+
 // get movie details
 export const GetMovieDetails = async (movieId: number) => {
   const options = {
@@ -125,6 +139,9 @@ export const GetMovieDetails = async (movieId: number) => {
 
   return res.data;
 };
+
+
+
 
 // get movie Images
 export const GetMovieImages = async (movieId: number) => {
@@ -148,7 +165,7 @@ export const GetMovieImages = async (movieId: number) => {
   return limitedBackdrops;
 };
 
-// get movie Images
+// get movie Videos
 export const GetMovieVideos = async (movieId: number) => {
   const options = {
     method: "GET",
@@ -202,6 +219,9 @@ interface FetchMovieProvidersResponse {
   };
 }
 
+
+
+// Getting movie streaming providers
 export const GetMovieProviders = async (movieId: number) => {
   const options = {
     method: "GET",
@@ -257,6 +277,8 @@ interface fetchReviewsResponse {
   results: Review[];
 }
 
+
+
 // Fetch Movie Reviews
 export const GetMovieReviews = async (movieId: number) => {
   const options = {
@@ -278,8 +300,10 @@ export const GetMovieReviews = async (movieId: number) => {
   return res.data.results.slice(0, 6);
 };
 
-// getting credits of a movie
 
+
+
+// getting credits of a movie
 interface fetchCreditsResponse {
   cast: Array<{
     name: string;

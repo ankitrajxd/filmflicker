@@ -27,6 +27,8 @@ const MovieDetailPage = async ({ params }: Props) => {
   const MovieReviews = await GetMovieReviews(parseInt(params.id));
   const MovieCast = await GetMovieCredits(parseInt(params.id));
 
+
+
   return (
     <AnimatedDiv className="md:my-[4rem]">
       <div className="flex flex-col md:flex-row gap-4">
@@ -52,13 +54,13 @@ const MovieDetailPage = async ({ params }: Props) => {
             ))}
           </div>
 
-          <p>Available On</p>
+          {MovieProviders["US"] && <p>Available On</p>}
           <div className="flex  gap-3 my-3">
-            {MovieProviders["US"].rent?.map((r) => (
+            {MovieProviders["US"]?.rent?.map((r) => (
               <div key={r.provider_id}>
                 {/* <p key={r.provider_id}>{r.provider_name}</p> */}
                 <img
-                  style={{ width: "50px", borderRadius: "10px" }}
+                  style={{ width: "40px", borderRadius: "10px" }}
                   src={`https://image.tmdb.org/t/p/w500/${r.logo_path}`}
                   alt={`provider logo - ${r.provider_name}`}
                 />

@@ -3,10 +3,7 @@ import List from './List';
 
 
 
-export interface Genre {
-    id: number;
-    name: string;
-}
+
 
 interface Props {
     selectedGenre?: string;
