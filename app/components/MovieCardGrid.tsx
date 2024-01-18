@@ -6,6 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { MdAddToPhotos } from "react-icons/md";
+import AddToWatch from "../AddToWatch";
 
 interface Props {
   Movies: Movie[];
@@ -46,6 +48,7 @@ const MovieCardGrid = ({ Movies }: Props) => {
                 >
                   ❤️ {movie.vote_average.toFixed(1)}
                 </Badge>
+                <AddToWatch movie={movie} />
               </div>
             </CardContent>
           </Card>
