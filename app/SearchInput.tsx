@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { useSearchParams } from "next/navigation";
 import { usePathname, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
-import WatchList from "./watchlist";
 
 const SearchInput = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -42,7 +41,6 @@ const SearchInput = () => {
           placeholder="Search Movies"
           defaultValue={searchParams.get("query")?.toString()}
         />
-        
       </form>
     </div>
   );

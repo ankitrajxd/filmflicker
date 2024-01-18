@@ -4,7 +4,7 @@ import MovieGrid from "./MovieGrid";
 import MovieListSwitch from "./MovieListSwitch";
 import SearchInput from "./SearchInput";
 import GenreList from "./_genreList/GenreList";
-import WatchList from "./watchlist";
+import WatchList from "./WatchList";
 
 interface Props {
   searchParams: {
@@ -32,10 +32,9 @@ export default function Home({ searchParams }: Props) {
           <div className="flex gap-3 items-center">
             <SearchInput />
             <div className="md:hidden">
-              <WatchList/>
+              <WatchList />
             </div>
           </div>
-         
         </div>
         <MovieGrid
           genre={searchParams.genre}
