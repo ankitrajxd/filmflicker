@@ -1,11 +1,12 @@
 "use client";
 
-import React from "react";
 import { MdAddToPhotos } from "react-icons/md";
 import axios, { Axios } from "axios";
 import { Movie } from "./services/fetchMovies";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import Spinner from "./components/Spinner";
 
 interface Props {
   movie: Movie;
@@ -15,31 +16,43 @@ const AddToWatch = ({ movie }: Props) => {
   const { toast } = useToast();
   const router = useRouter();
 
-  const addToWatchlist = async (movieid: number, moviename: string) => {
+  const [isLoading, setIsLoading] = useState<boolean>();
+
+  const addToWatchlist = async (movie: Movie) => {
     try {
-      await axios.post("/api/watchlist", { movieid, moviename });
+      setIsLoading(true);
+
+      await axios.post("/api/watchlist", movie);
 
       toast({
         title: "Movie Added!",
-        description: `${moviename} added to your watchlist!`,
+        description: `${movie.title} added to your watchlist!`,
       });
 
       router.refresh();
+      setIsLoading(false);
 
       // alert(movie.title + " Added!");
     } catch (error) {
       toast({
         // title: "Movie Added!",
-        description: `${moviename} is already in your Watchlist!`,
+        description: `${movie.title} is already in your Watchlist!`,
       });
+      setIsLoading(false);
     }
   };
 
   return (
-    <MdAddToPhotos
-      className="cursor-pointer"
-      onClick={() => addToWatchlist(movie.id, movie.title)}
-    />
+    <div>
+      {isLoading && <Spinner />}
+
+      {!isLoading && (
+        <MdAddToPhotos
+          className="cursor-pointer"
+          onClick={() => addToWatchlist(movie)}
+        />
+      )}
+    </div>
   );
 };
 

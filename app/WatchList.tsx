@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Button } from "@/components/ui/button";
 import prisma from "@/prisma/client";
 import {
@@ -8,7 +9,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { unstable_noStore as noStore } from "next/cache";
+import Link from "next/link";
 
 const WatchList = async () => {
   const movies = await prisma.movieWatchList.findMany();
@@ -19,13 +20,26 @@ const WatchList = async () => {
         <SheetTrigger>View</SheetTrigger>
         <SheetContent side={"right"}>
           <SheetHeader>
-            <SheetTitle>Are you absolutely sure?</SheetTitle>
+            <SheetTitle>Your WatchList</SheetTitle>
             <SheetDescription>
-              <ul>
+              <div className="flex flex-wrap gap-3">
                 {movies.map((m) => (
-                  <li key={m.movieid}>{m.moviename}</li>
+                  <div key={m.movieid}>
+                    <Link href={`/movies/${m.movie.id}`}>
+                      <img
+                        className="rounded-md"
+                        width="110px"
+                        src={`https://image.tmdb.org/t/p/w500/${m.movie.poster_path}`}
+                        alt="movieimg"
+                      />
+
+                      <Link href={`/movies/${m.movie.id}`}>
+                        <p>{m.movie.title}</p>
+                      </Link>
+                    </Link>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </SheetDescription>
           </SheetHeader>
         </SheetContent>
