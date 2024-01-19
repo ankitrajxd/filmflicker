@@ -38,3 +38,28 @@ export async function POST(request: NextRequest) {
   return NextResponse.json(newMovie, { status: 201 });
 }
 
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const movie = await prisma.movieWatchList.findUnique({
+    where: {
+      movieid: parseInt(params.id),
+    },
+  });
+
+  if (!movie) {
+    return NextResponse.json(
+      { error: "Movie does not exist" },
+      { status: 404 }
+    );
+  }
+
+  await prisma.movieWatchList.delete({
+    where: {
+      movieid: movie.movieid,
+    },
+  });
+
+  return NextResponse.json({}, { status: 200 });
+}

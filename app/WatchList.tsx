@@ -1,7 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { Button } from "@/components/ui/button";
-import { MdDelete } from "react-icons/md";
-
 import prisma from "@/prisma/client";
 import {
   Sheet,
@@ -12,12 +10,11 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import Link from "next/link";
-import axios from "axios";
 import DeleteMovie from "./DeleteMovie";
 
 const WatchList = async () => {
   const movies = await prisma.movieWatchList.findMany();
-
+  
   return (
     <div>
       <Sheet>
@@ -37,7 +34,7 @@ const WatchList = async () => {
                       <Link href={`/movies/${m.movie.id}`}>
                         <img
                           className="rounded-md"
-                          width="110px"
+                          width="70px"
                           src={`https://image.tmdb.org/t/p/w500/${m.movie.poster_path}`}
                           alt="movieimg"
                         />

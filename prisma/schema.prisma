@@ -11,8 +11,8 @@ datasource db {
 }
 
 model MovieWatchList {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  movieid  Int    @unique
+id       String    @id @default(auto()) @map("_id") @db.ObjectId
+movieid  Int    @unique
   movie Movie
 }
 

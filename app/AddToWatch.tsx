@@ -7,6 +7,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Spinner from "./components/Spinner";
+import { useAuth } from "@clerk/nextjs";
 
 interface Props {
   movie: Movie;
@@ -15,30 +16,34 @@ interface Props {
 const AddToWatch = ({ movie }: Props) => {
   const { toast } = useToast();
   const router = useRouter();
-
   const [isLoading, setIsLoading] = useState<boolean>();
+  const { isLoaded, userId, sessionId, getToken } = useAuth();
 
   const addToWatchlist = async (movie: Movie) => {
-    try {
-      setIsLoading(true);
+    if (userId) {
+      try {
+        setIsLoading(true);
 
-      await axios.post("/api/watchlist", movie);
+        await axios.post("/api/watchlist", movie);
 
+        toast({
+          title: "Movie Added!",
+          description: `${movie.title} added to your watchlist!`,
+        });
+
+        router.refresh();
+        setIsLoading(false);
+      } catch (error) {
+        toast({
+          description: `${movie.title} is already in your Watchlist!`,
+        });
+        setIsLoading(false);
+        console.log(error);
+      }
+    } else {
       toast({
-        title: "Movie Added!",
-        description: `${movie.title} added to your watchlist!`,
+        title: "Please Login first!",
       });
-
-      router.refresh();
-      setIsLoading(false);
-
-      // alert(movie.title + " Added!");
-    } catch (error) {
-      toast({
-        // title: "Movie Added!",
-        description: `${movie.title} is already in your Watchlist!`,
-      });
-      setIsLoading(false);
     }
   };
 

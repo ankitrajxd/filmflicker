@@ -7,6 +7,8 @@ import NavBar from "./NavBar";
 import AnimatedDiv from "./components/AnimatedDiv";
 import FlareCursor from "./components/FlareCursor";
 import { Toaster } from "@/components/ui/toaster";
+import { ClerkProvider } from "@clerk/nextjs";
+import { dark, neobrutalism } from "@clerk/themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,19 +24,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`p-5 max-w-[1280px] mx-auto ${inter.className}`}>
-        <AnimatedDiv>
-          <FlareCursor />
-          <NextTopLoader color="violet" />
-          <ThemeProvider attribute="class" defaultTheme="dark">
-            <NavBar />
-            {children}
-          </ThemeProvider>
-          <Toaster />
-        </AnimatedDiv>
-      </body>
-    </html>
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+        signIn: { baseTheme: dark },
+        signUp: { baseTheme: dark },
+      }}
+    >
+      <html lang="en">
+        <body className={`p-5 max-w-[1280px] mx-auto ${inter.className}`}>
+          <AnimatedDiv>
+            <FlareCursor />
+            <NextTopLoader color="violet" />
+            <ThemeProvider attribute="class" defaultTheme="dark">
+              <NavBar />
+              {children}
+            </ThemeProvider>
+            <Toaster />
+          </AnimatedDiv>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
 

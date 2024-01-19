@@ -26,9 +26,9 @@ const DeleteMovie = ({ movieid }: Props) => {
       router.refresh();
       setIsLoading(false);
     } catch (error: any) {
-        toast({
-            title: "Error!",
-          });
+      toast({
+        title: "Error!",
+      });
       setIsLoading(false);
     }
     router.refresh();

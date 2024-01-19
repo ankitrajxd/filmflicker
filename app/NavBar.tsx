@@ -2,8 +2,12 @@ import React from "react";
 import Link from "next/link";
 import styles from "./NavBar.module.css";
 import { Menubar, MenubarMenu, MenubarTrigger } from "@/components/ui/menubar";
+import { SignInButton, UserButton } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs";
 
 const NavBar = () => {
+  const { userId } = auth();
+
   return (
     <div className={styles.navbar}>
       <Link
@@ -12,7 +16,7 @@ const NavBar = () => {
       >
         FilmFlicker.
       </Link>
-      <Menubar className="w-[80%] ml-2 hidden sm:inline-flex border-2">
+      <Menubar className="w-[80%] mx-4 hidden sm:inline-flex border-2">
         <MenubarMenu>
           <MenubarTrigger>
             <Link href={"/"}>Movies</Link>
@@ -29,6 +33,10 @@ const NavBar = () => {
           </MenubarTrigger>
         </MenubarMenu>
       </Menubar>
+      <div>
+        <UserButton afterSignOutUrl="/" />
+        {!userId && <SignInButton />}
+      </div>
     </div>
   );
 };
