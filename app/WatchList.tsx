@@ -17,7 +17,9 @@ const WatchList = async () => {
   return (
     <div>
       <Sheet>
-        <SheetTrigger>View</SheetTrigger>
+        <SheetTrigger asChild>
+        <Button className="border-2" variant="outline">Watchlist</Button>
+        </SheetTrigger>
         <SheetContent side={"right"}>
           <SheetHeader>
             <SheetTitle>Your WatchList</SheetTitle>

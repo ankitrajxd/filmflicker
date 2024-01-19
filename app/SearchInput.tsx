@@ -24,7 +24,7 @@ const SearchInput = () => {
   }, 300);
 
   return (
-    <div>
+    <div className="w-full">
       <form
         className="flex content-center gap-3"
         onSubmit={(e) => {

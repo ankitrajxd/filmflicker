@@ -25,7 +25,7 @@ const NavBar = () => {
         </MenubarMenu>
         <MenubarMenu>
           <MenubarTrigger>
-            <Link href={"/about"}>About</Link>
+            <Link href={"/watchlist"}>My WatchList</Link>
           </MenubarTrigger>
         </MenubarMenu>
       </Menubar>
