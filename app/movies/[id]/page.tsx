@@ -38,7 +38,7 @@ const MovieDetailPage = async ({ params }: Props) => {
         ></img>
         <div>
           <ul>
-            {/* <li>{Movie.id}</li> */}
+            <li>{Movie.id}</li>
             <li className="text-3xl font-extrabold">{Movie.title}</li>
             <li className="mb-7">{Movie.tagline}</li>
             <li>Release Date: {Movie.release_date}</li>

@@ -9,20 +9,18 @@ const movieIdSchema = z.object({
 export async function POST(request: NextRequest) {
   const body = await request.json();
 
-  console.log(body);
+  const movie = await prisma.movieWatchList.findUnique({
+    where: {
+      movieid: body.id,
+    },
+  });
 
-  // const movie = await prisma.movieWatchList.findUnique({
-  //   where: {
-  //     movieid: body.id,
-  //   },
-  // });
-
-  // if (movie) {
-  //   return NextResponse.json(
-  //     { error: "Movie Already exist!" },
-  //     { status: 400 }
-  //   );
-  // }
+  if (movie) {
+    return NextResponse.json(
+      { error: "Movie Already exist!" },
+      { status: 400 }
+    );
+  }
 
   const newMovie = await prisma.movieWatchList.create({
     data: {
@@ -40,27 +38,3 @@ export async function POST(request: NextRequest) {
   return NextResponse.json(newMovie, { status: 201 });
 }
 
-// export async function DELETE(request: NextRequest) {
-//   const body = await request.json();
-
-//   const movie = await prisma.movieWatchList.findUnique({
-//     where: {
-//       movieid: body.movieid,
-//     },
-//   });
-
-//   if (!movie) {
-//     return NextResponse.json(
-//       { error: "Movie does not exist" },
-//       { status: 404 }
-//     );
-//   }
-
-//   await prisma.movieWatchList.delete({
-//     where: {
-//       movieid: movie.movieid,
-//     },
-//   });
-
-//   return NextResponse.json({}, { status: 200 });
-// }
