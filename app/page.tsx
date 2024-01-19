@@ -29,7 +29,7 @@ export default function Home({ searchParams }: Props) {
         />
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
           <MovieListSwitch selectedList={searchParams.filter_by} />
-          <div className="flex gap-3 items-center">
+          <div className="flex gap-y-3 items-center">
             <SearchInput />
             <div className="md:hidden">
               <WatchList />
