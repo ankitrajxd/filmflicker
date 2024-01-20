@@ -31,6 +31,7 @@ interface MovieDetail {
   title: string;
   vote_average: number;
   id: number;
+  imdb_id: string;
 }
 
 interface MovieImage {
