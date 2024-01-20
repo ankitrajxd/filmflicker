@@ -6,7 +6,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { MdAddToPhotos } from "react-icons/md";
 import AddToWatch from "../AddToWatch";
 
 interface Props {
@@ -39,7 +38,7 @@ const MovieCardGrid = ({ Movies }: Props) => {
                 </Badge>
               </CardTitle>
               <div className="flex justify-between items-center">
-                <Button className="border-2" size="sm" variant="outline">
+                <Button className="border-2" size="sm" variant="secondary">
                   <Link href={`/movies/${movie.id}`}>Read More</Link>
                 </Button>
                 <Badge

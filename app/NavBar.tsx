@@ -3,7 +3,8 @@ import Link from "next/link";
 import styles from "./NavBar.module.css";
 import { Menubar, MenubarMenu, MenubarTrigger } from "@/components/ui/menubar";
 import { SignInButton, UserButton } from "@clerk/nextjs";
-import { auth, currentUser } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs";
+import SignIn from "./components/SignIn";
 
 const NavBar = () => {
   const { userId } = auth();
@@ -35,7 +36,7 @@ const NavBar = () => {
       </Menubar>
       <div>
         <UserButton afterSignOutUrl="/" />
-        {!userId && <SignInButton />}
+        {!userId && <SignIn />}
       </div>
     </div>
   );
