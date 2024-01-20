@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import RecommendedMoviesComponent from "./RecommendedMoviesComponent";
 import minutetohour from "@/app/services/minuteToHour";
 import { MdVerified } from "react-icons/md";
+import DownloadMovie from "./DownloadMovie";
 
 interface Props {
   params: { id: string };
@@ -103,6 +104,12 @@ const MovieDetailPage = async ({ params }: Props) => {
           ></iframe>
         ))}
       </div>
+
+
+          {/* <DownloadMovie Imdb_id={Movie.}/> */}
+
+
+
 
       {/* User reviews */}
 
