@@ -34,7 +34,7 @@ const NavBar = () => {
           </MenubarTrigger>
         </MenubarMenu>
       </Menubar>
-      <div>
+      <div className="w-14 flex justify-end">
         <UserButton afterSignOutUrl="/" />
         {!userId && <SignIn />}
       </div>
