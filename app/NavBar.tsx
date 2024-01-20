@@ -33,7 +33,7 @@ const NavBar = () => {
           </MenubarTrigger>
         </MenubarMenu>
       </Menubar>
-      <div>
+      <div className="w-14">
         <UserButton afterSignOutUrl="/" />
         {!userId && <SignInButton />}
       </div>
