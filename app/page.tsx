@@ -18,14 +18,12 @@ interface Props {
 
 export default function Home({ searchParams }: Props) {
   return (
-    <div className="grid sm:grid-cols-5 grid-cols-1 md:mt-[3rem]">
+    <div className="grid sm:grid-cols-5 grid-cols-1 md:mt-[2.5rem]">
       <div className="md:flex md:max-w-[120px] md:flex-col sm:gap-2 hidden my-3">
         <GenreList selectedGenre={searchParams.genre} />
       </div>
 
       <div className="col-span-5 md:col-span-4 gap-5">
-        <Carousel/>
-
         <Heading
           selectedGenre={searchParams.genre}
           selectedList={searchParams.filter_by}
@@ -39,6 +37,13 @@ export default function Home({ searchParams }: Props) {
             </div>
           </div>
         </div>
+        {!searchParams.query && <Carousel />}
+
+        {!searchParams.query && (
+          <p className="font-extrabold text-4xl mt-[2rem] hidden md:block">
+            Discover 🍿
+          </p>
+        )}
         <MovieGrid
           genre={searchParams.genre}
           filter_by={searchParams.filter_by}

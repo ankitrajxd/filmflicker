@@ -17,7 +17,7 @@ const NavBar = () => {
       >
         FilmFlicker.
       </Link>
-      <Menubar className="w-[80%] mx-4 hidden sm:inline-flex border-2">
+      <Menubar className="w-[90%] ml-[3rem] mr-3 hidden sm:inline-flex border-2">
         <MenubarMenu>
           <MenubarTrigger>
             <Link href={"/"}>Movies</Link>
@@ -34,7 +34,7 @@ const NavBar = () => {
           </MenubarTrigger>
         </MenubarMenu>
       </Menubar>
-      <div className="w-14 flex justify-end">
+      <div className="flex justify-end">
         <UserButton afterSignOutUrl="/" />
         {!userId && <SignIn />}
       </div>
