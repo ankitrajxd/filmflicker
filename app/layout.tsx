@@ -35,7 +35,7 @@ export default function RootLayout({
         <body className={`p-5 max-w-[1280px] mx-auto ${inter.className}`}>
           <AnimatedDiv>
             <FlareCursor />
-            <NextTopLoader color="violet" />
+            <NextTopLoader color="#00A8B5" />
             <ThemeProvider attribute="class" defaultTheme="dark">
               <NavBar />
               {children}
