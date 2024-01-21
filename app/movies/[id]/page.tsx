@@ -51,7 +51,9 @@ const MovieDetailPage = async ({ params }: Props) => {
 
           <div className="flex flex-wrap gap-3 mt-3 mb-7">
             {Movie.genres.map((g) => (
-              <Badge variant={'secondary'} key={g.id}>{g.name}</Badge>
+              <Badge variant={"secondary"} key={g.id}>
+                {g.name}
+              </Badge>
             ))}
           </div>
 
@@ -106,12 +108,8 @@ const MovieDetailPage = async ({ params }: Props) => {
         ))}
       </div>
 
-
-          <h2 className="text-2xl font-extrabold">Available Links</h2>
+      <h2 className="text-2xl font-extrabold">Available Links</h2>
           <DownloadMovie Imdb_id={Movie.imdb_id}/>
-
-
-
 
       {/* User reviews */}
 
