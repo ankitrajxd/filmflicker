@@ -107,7 +107,8 @@ const MovieDetailPage = async ({ params }: Props) => {
       </div>
 
 
-          {/* <DownloadMovie Imdb_id={Movie.}/> */}
+          <h2 className="text-2xl font-extrabold">Available Links</h2>
+          <DownloadMovie Imdb_id={Movie.imdb_id}/>
 
 
 
