@@ -24,7 +24,7 @@ export default function Home({ searchParams }: Props) {
       </div>
 
       <div className="col-span-5 md:col-span-4 gap-5">
-        {/* <Carousel/> */}
+        <Carousel/>
 
         <Heading
           selectedGenre={searchParams.genre}
