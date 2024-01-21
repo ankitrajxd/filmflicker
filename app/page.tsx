@@ -5,6 +5,7 @@ import MovieListSwitch from "./MovieListSwitch";
 import SearchInput from "./SearchInput";
 import GenreList from "./_genreList/GenreList";
 import WatchList from "./WatchList";
+import Carousel from "./components/Carousel";
 
 interface Props {
   searchParams: {
@@ -23,6 +24,8 @@ export default function Home({ searchParams }: Props) {
       </div>
 
       <div className="col-span-5 md:col-span-4 gap-5">
+        {/* <Carousel/> */}
+
         <Heading
           selectedGenre={searchParams.genre}
           selectedList={searchParams.filter_by}
