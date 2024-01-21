@@ -13,7 +13,8 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background: linear-gradient(26deg, #45caff 41%, #f41bff 47%);
+  /* background: linear-gradient(26deg, #45caff 41%, #f41bff 47%); */
+  background: linear-gradient(26deg, #45caff 51%, #FF7070 47%);
   transform: translate3d(0, 50px, 0) scale(0.49);
   height: 150px;
   filter: blur(220px);
