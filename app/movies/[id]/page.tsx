@@ -15,6 +15,7 @@ import RecommendedMoviesComponent from "./RecommendedMoviesComponent";
 import minutetohour from "@/app/services/minuteToHour";
 import { MdVerified } from "react-icons/md";
 import DownloadMovie from "./DownloadMovie";
+import { auth } from "@clerk/nextjs/server";
 
 interface Props {
   params: { id: string };
@@ -28,6 +29,7 @@ const MovieDetailPage = async ({ params }: Props) => {
   const RecommendedMovies = await GetRecommendedMovies(parseInt(params.id));
   const MovieReviews = await GetMovieReviews(parseInt(params.id));
   const MovieCast = await GetMovieCredits(parseInt(params.id));
+  const { userId } = auth();
 
   return (
     <AnimatedDiv className="md:my-[4rem]">
@@ -108,8 +110,13 @@ const MovieDetailPage = async ({ params }: Props) => {
         ))}
       </div>
 
-      <h2 className="text-2xl font-extrabold">Available Links</h2>
-          <DownloadMovie Imdb_id={Movie.imdb_id}/>
+      {/* links */}
+      {userId && (
+        <div>
+          <h2 className="text-2xl font-extrabold">Available Links</h2>
+          <DownloadMovie Imdb_id={Movie.imdb_id} />
+        </div>
+      )}
 
       {/* User reviews */}
 
