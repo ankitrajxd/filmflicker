@@ -80,7 +80,7 @@ const DownloadMovie = ({ Imdb_id }: Props) => {
   };
 
     return (
-      <div className="flex gap-4">
+      <div className="flex flex-wrap gap-4">
         {links?.map((l, index) => (
           <p className="" key={index}>
             <Button variant={'link'} onClick={() => handleCopyToClipboard(l)}>

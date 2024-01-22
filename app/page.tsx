@@ -12,6 +12,7 @@ interface Props {
     query?: string;
     filter_by?: string;
     genre?: string;
+    genreName?: string;
     page?: string;
   };
 }
@@ -20,18 +21,18 @@ export default function Home({ searchParams }: Props) {
   return (
     <div className="grid sm:grid-cols-5 grid-cols-1 md:mt-[2.5rem]">
       <div className="md:flex md:max-w-[120px] md:flex-col sm:gap-2 hidden my-3">
-        <GenreList selectedGenre={searchParams.genre} />
+        <GenreList selectedGenre={searchParams.genreName} />
       </div>
 
       <div className="col-span-5 md:col-span-4 gap-5">
         <Heading
-          selectedGenre={searchParams.genre}
+          selectedGenre={searchParams.genreName}
           selectedList={searchParams.filter_by}
         />
 
-        {!searchParams.query && <Carousel />}
+        {!searchParams.query && !searchParams.genre && <Carousel />}
 
-        {!searchParams.query && (
+        {!searchParams.query && !searchParams.genre && (
           <p
             className={`font-extrabold text-2xl sm:text-4xl text-center sm:text-start mt-[2rem] mb-4 $`}
           >

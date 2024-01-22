@@ -48,7 +48,7 @@ const MovieDetailPage = async ({ params }: Props) => {
             <li className="text-3xl font-extrabold">{Movie.title}</li>
             <li className="mb-7">{Movie.tagline}</li>
             <li>Release Date: {Movie.release_date}</li>
-            <li>{Movie.vote_average.toFixed(1)}/10</li>
+            <li>{Movie.vote_average?.toFixed(1)}/10</li>
             <li>{minutetohour(Movie.runtime)}</li>
             <li>Status: {Movie.status}</li>
           </ul>
@@ -75,8 +75,10 @@ const MovieDetailPage = async ({ params }: Props) => {
             ))}
           </div>
 
-
-          <Link className="absolute left-[-19rem] top-[-2.5rem] right-3 hidden md:block" href={"../"}>
+          <Link
+            className="absolute left-[-19rem] top-[-2.5rem] right-3 hidden md:block"
+            href={"../"}
+          >
             <FaArrowLeftLong />
           </Link>
         </div>
@@ -97,7 +99,7 @@ const MovieDetailPage = async ({ params }: Props) => {
             </div>
             <p className="text-[14px] mt-3">{cast.name}</p>
             <p className="text-[12px] text-slate-400">
-              {cast.character.split("/")[0]}
+              {cast.character?.split("/")[0]}
             </p>
             {/* <p>{cast.cast_id}</p> */}
           </div>
@@ -119,7 +121,7 @@ const MovieDetailPage = async ({ params }: Props) => {
 
       {/* links */}
       {userId && (
-        <div className="flex flex-wrap">
+        <div>
           <h2 className="text-2xl font-extrabold">Available Links</h2>
           <DownloadMovie Imdb_id={Movie.imdb_id} />
         </div>

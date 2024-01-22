@@ -52,7 +52,7 @@ const WatchList = async () => {
 
                           <div >
                             <p className="text-md font-bold">{m.movie.title}</p>
-                            <Badge className="my-2 text-start" variant={'secondary'}>{m.movie.release_date.split('-')[0]}</Badge>
+                            <Badge className="my-2 text-start" variant={'secondary'}>{m.movie.release_date?.split('-')[0]}</Badge>
                           </div>
                         </Link>
                         <DeleteMovie movieid={m.movie.id} />

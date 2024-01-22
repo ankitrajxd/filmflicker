@@ -1,6 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { MovieList, fetchMovies } from "./services/fetchMovies";
+import {
+  MovieList,
+  fetchMovies,
+  fetchMoviesByGenre,
+} from "./services/fetchMovies";
 import LoadNext from "./LoadNext";
 import MovieCardGrid from "./components/MovieCardGrid";
 
@@ -11,12 +15,11 @@ interface Props {
   page?: number;
 }
 
-const MovieGrid = async ({ query, filter_by, genre, page }: Props) => {
+const MovieGrid = async ({ query, genre, page }: Props) => {
   let Movies;
   if (query) {
     Movies = await fetchMovies("search", undefined, query);
-  } 
-  else if (genre) {
+  } else if (genre) {
     Movies = await fetchMovies("discover", genre);
   } else if (page) {
     Movies = await fetchMovies("discover", undefined, undefined, page);

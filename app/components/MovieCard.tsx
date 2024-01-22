@@ -31,7 +31,7 @@ const MovieCard = ({ movie, className }: Props) => {
           <CardTitle className="text-base mb-3">
             <Link href={`/movies/${movie.id}`}>{movie.title}</Link>
             <Badge className="mx-2" variant="secondary">
-              {movie.release_date.split("-")[0]}
+              {movie.release_date?.split("-")[0]}
             </Badge>
           </CardTitle>
           <div className="flex justify-between items-center">
@@ -42,7 +42,7 @@ const MovieCard = ({ movie, className }: Props) => {
               className="absolute top-3 left-3 bg-slate-800 backdrop-blur-md font-bold"
               variant="secondary"
             >
-              ❤️ {movie.vote_average.toFixed(1)}
+              ❤️ {movie.vote_average?.toFixed(1)}
             </Badge>
             <AddToWatch movie={movie} />
           </div>

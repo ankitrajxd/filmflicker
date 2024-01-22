@@ -61,7 +61,6 @@ const header = {
 
 const endpoint = "https://api.themoviedb.org/3";
 
-
 // fetching movies
 
 export const fetchMovies = async (
@@ -91,8 +90,30 @@ export const fetchMovies = async (
   return res.data.results;
 };
 
+// fetching movies by genre
 
+export const fetchMoviesByGenre = async (
+  with_genres?: number,
+  page?: number
+) => {
+  const options = {
+    method: "GET",
+    headers: {
+      ...header,
+    },
+    params: {
+      page: page,
+      sort_by: "vote_count.desc",
+    },
+  };
 
+  const res = await axios.get<fetchResponse>(
+    `${endpoint}/movie/${with_genres}`,
+    options
+  );
+
+  return res.data.results;
+};
 
 // fetching movie lists
 
@@ -118,9 +139,6 @@ export const MovieList = async (
   return res.data.results;
 };
 
-
-
-
 // get movie details
 export const GetMovieDetails = async (movieId: number) => {
   const options = {
@@ -140,9 +158,6 @@ export const GetMovieDetails = async (movieId: number) => {
 
   return res.data;
 };
-
-
-
 
 // get movie Images
 export const GetMovieImages = async (movieId: number) => {
@@ -220,8 +235,6 @@ interface FetchMovieProvidersResponse {
   };
 }
 
-
-
 // Getting movie streaming providers
 export const GetMovieProviders = async (movieId: number) => {
   const options = {
@@ -278,8 +291,6 @@ interface fetchReviewsResponse {
   results: Review[];
 }
 
-
-
 // Fetch Movie Reviews
 export const GetMovieReviews = async (movieId: number) => {
   const options = {
@@ -300,9 +311,6 @@ export const GetMovieReviews = async (movieId: number) => {
 
   return res.data.results.slice(0, 6);
 };
-
-
-
 
 // getting credits of a movie
 interface fetchCreditsResponse {
