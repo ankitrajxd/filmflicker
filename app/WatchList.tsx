@@ -13,6 +13,7 @@ import Link from "next/link";
 import DeleteMovie from "./DeleteMovie";
 import { auth } from "@clerk/nextjs/server";
 import { toast } from "@/components/ui/use-toast";
+import { Badge } from "@/components/ui/badge";
 
 const WatchList = async () => {
   const { userId } = auth();
@@ -37,23 +38,25 @@ const WatchList = async () => {
             <SheetHeader>
               <SheetTitle>Global WatchList</SheetTitle>
               <SheetDescription>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-col gap-3">
                   {movies?.map((m) => (
                     <div key={m.movieid}>
-                      <div>
-                        <Link href={`/movies/${m.movie.id}`}>
+                      <div className="flex justify-between border-2 p-2 rounded-md">
+                        <Link className="flex gap-6" href={`/movies/${m.movie.id}`}>
                           <img
                             className="rounded-md"
                             width="70px"
                             src={`https://image.tmdb.org/t/p/w500/${m.movie.poster_path}`}
                             alt="movieimg"
                           />
-                          <Link href={`/movies/${m.movie.id}`}>
-                            <p>{m.movie.title}</p>
-                          </Link>
+
+                          <div >
+                            <p className="text-md font-bold">{m.movie.title}</p>
+                            <Badge className="my-2 text-start" variant={'secondary'}>{m.movie.release_date.split('-')[0]}</Badge>
+                          </div>
                         </Link>
+                        <DeleteMovie movieid={m.movie.id} />
                       </div>
-                      <DeleteMovie movieid={m.movie.id} />
                     </div>
                   ))}
                 </div>

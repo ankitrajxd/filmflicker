@@ -17,12 +17,14 @@ const MovieCard = ({ movie, className }: Props) => {
   return (
     <AnimatedDiv className={`break-inside-avoid ${className}`} key={movie.id}>
       <Card className="mb-4 border-2 relative overflow-hidden">
-        <CardHeader style={{ overflow: "hidden" }} className="h-[180px] sm:h-full object-contain">
+        <CardHeader
+          style={{ overflow: "hidden" }}
+          className="h-[180px] sm:h-full object-contain"
+        >
           <img
             className="md:hover:scale-[1.125] transition-transform ease-in-out duration-300 rounded-md object-cover"
             src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
             alt="anime-img"
-            
           ></img>
         </CardHeader>
         <CardContent className="mt-2">

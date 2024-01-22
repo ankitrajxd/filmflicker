@@ -36,7 +36,7 @@ const Carousel = () => {
       }}
     >
       {movies?.map((m) => (
-        <SwiperSlide className="p-3" key={m.id}>
+        <SwiperSlide className="p-2 md:p-3" key={m.id}>
           <Link href={"/movies/" + m.id}>
             <img
               className="rounded-lg"

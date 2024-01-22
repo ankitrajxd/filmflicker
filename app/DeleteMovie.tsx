@@ -36,10 +36,12 @@ const DeleteMovie = ({ movieid }: Props) => {
 
   return (
     <>
-      {isLoading && <Spinner />}
+      {isLoading && <div className="my-8">
+        <Spinner />
+      </div>}
       {!isLoading && (
         <div onClick={() => onDelete()} className="my-8">
-          <MdDelete size={"25px"} />
+          <MdDelete color='red' size={"25px"} />
         </div>
       )}
     </>
