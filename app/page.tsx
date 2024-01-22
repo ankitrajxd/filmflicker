@@ -28,6 +28,16 @@ export default function Home({ searchParams }: Props) {
           selectedGenre={searchParams.genre}
           selectedList={searchParams.filter_by}
         />
+
+        {!searchParams.query && <Carousel />}
+
+        {!searchParams.query && (
+          <p
+            className={`font-extrabold text-2xl sm:text-4xl text-center sm:text-start mt-[2rem] mb-4 $`}
+          >
+            Discover 🍿
+          </p>
+        )}
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
           <MovieListSwitch selectedList={searchParams.filter_by} />
           <div className="flex gap-y-3 items-center">
@@ -37,13 +47,6 @@ export default function Home({ searchParams }: Props) {
             </div>
           </div>
         </div>
-        {!searchParams.query && <Carousel />}
-
-        {!searchParams.query && (
-          <p className="font-extrabold text-4xl mt-[2rem] hidden md:block">
-            Discover 🍿
-          </p>
-        )}
         <MovieGrid
           genre={searchParams.genre}
           filter_by={searchParams.filter_by}
