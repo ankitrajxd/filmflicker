@@ -112,7 +112,7 @@ const MovieDetailPage = async ({ params }: Props) => {
 
       {/* links */}
       {userId && (
-        <div>
+        <div className="flex flex-wrap">
           <h2 className="text-2xl font-extrabold">Available Links</h2>
           <DownloadMovie Imdb_id={Movie.imdb_id} />
         </div>

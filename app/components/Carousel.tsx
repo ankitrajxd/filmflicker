@@ -3,8 +3,9 @@
 
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/autoplay"
+import "swiper/css/autoplay";
 
 import { Movie, MovieList } from "../services/fetchMovies";
 import Link from "next/link";
@@ -24,9 +25,10 @@ const Carousel = () => {
 
   return (
     <Swiper
+      modules={[Autoplay]}
       className="my-4 border-2 p-4 rounded-xl"
       spaceBetween={0}
-      slidesPerView={3}
+      slidesPerView={3.5}
       onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => console.log(swiper)}
       autoplay

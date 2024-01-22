@@ -16,7 +16,7 @@ interface Props {
 const MovieCard = ({ movie, className }: Props) => {
   return (
     <AnimatedDiv className={`break-inside-avoid ${className}`} key={movie.id}>
-      <Card className="mb-4 border-2 relative overflow-hidden sm:h-full">
+      <Card className="mb-4 border-2 relative overflow-hidden">
         <CardHeader style={{ overflow: "hidden" }} className="h-[180px] sm:h-full object-contain">
           <img
             className="md:hover:scale-[1.125] transition-transform ease-in-out duration-300 rounded-md object-cover"
@@ -33,7 +33,7 @@ const MovieCard = ({ movie, className }: Props) => {
             </Badge>
           </CardTitle>
           <div className="flex justify-between items-center">
-            <Button className="border-2 sm:block" size="sm" variant="secondary">
+            <Button className="border-2" size="sm" variant="secondary">
               <Link href={`/movies/${movie.id}`}>Read More</Link>
             </Button>
             <Badge
