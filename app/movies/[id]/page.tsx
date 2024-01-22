@@ -16,6 +16,8 @@ import minutetohour from "@/app/services/minuteToHour";
 import { MdVerified } from "react-icons/md";
 import DownloadMovie from "./DownloadMovie";
 import { auth } from "@clerk/nextjs/server";
+import Link from "next/link";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 interface Props {
   params: { id: string };
@@ -33,13 +35,13 @@ const MovieDetailPage = async ({ params }: Props) => {
 
   return (
     <AnimatedDiv className="md:my-[4rem]">
-      <div className="flex flex-col md:flex-row gap-4">
+      <div className="flex flex-col md:flex-row gap-4 ">
         <img
           className="rounded-lg min-w-[100%] md:min-w-[initial] md:w-[18rem]"
           alt="movie poster"
           src={`https://image.tmdb.org/t/p/w500/${Movie.poster_path}`}
         ></img>
-        <div>
+        <div className="relative">
           <ul>
             {/* <li>{Movie.id}</li>
             <li>{Movie.imdb_id}</li> */}
@@ -72,6 +74,11 @@ const MovieDetailPage = async ({ params }: Props) => {
               </div>
             ))}
           </div>
+
+
+          <Link className="absolute left-[-19rem] top-[-2.5rem] right-3 hidden md:block" href={"../"}>
+            <FaArrowLeftLong />
+          </Link>
         </div>
       </div>
 
