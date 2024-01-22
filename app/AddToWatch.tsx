@@ -8,6 +8,8 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Spinner from "./components/Spinner";
 import { useAuth } from "@clerk/nextjs";
+import { ToastAction } from "@/components/ui/toast";
+import Link from "next/link";
 
 interface Props {
   movie: Movie;
@@ -29,6 +31,11 @@ const AddToWatch = ({ movie }: Props) => {
         toast({
           title: "Movie Added!",
           description: `${movie.title} added to your watchlist!`,
+          action: (
+            <ToastAction altText="View">
+              <Link href={"/watchlist"}>View</Link>
+            </ToastAction>
+          ),
         });
 
         router.refresh();
@@ -43,6 +50,11 @@ const AddToWatch = ({ movie }: Props) => {
     } else {
       toast({
         title: "Please Login first!",
+        action: (
+          <ToastAction altText="Sign in">
+            <Link href={"/sign-in"}>Sign in</Link>
+          </ToastAction>
+        ),
       });
     }
   };
