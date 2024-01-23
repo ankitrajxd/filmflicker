@@ -15,22 +15,22 @@ const MovieListSwitch = ({ selectedList }: Props) => {
 
   // const onclickPopular = () => {
   //   const params = new URLSearchParams(searchParams);
-  //   params.set("filter_by", "popular");
+  //   params.set("filter_by", "Popular");
   //   replace(`${pathname}?${params.toString()}`);
   // };
   // const onclickNowPlaying = () => {
   //   const params = new URLSearchParams(searchParams);
-  //   params.set("filter_by", "now_playing");
+  //   params.set("filter_by", "Now Playing");
   //   replace(`${pathname}?${params.toString()}`);
   // };
   // const onclickUpcoming = () => {
   //   const params = new URLSearchParams(searchParams);
-  //   params.set("filter_by", "upcoming");
+  //   params.set("filter_by", "Upcoming");
   //   replace(`${pathname}?${params.toString()}`);
   // };
   // const onclickTop = () => {
   //   const params = new URLSearchParams(searchParams);
-  //   params.set("filter_by", "top_rated");
+  //   params.set("filter_by", "top");
   //   replace(`${pathname}?${params.toString()}`);
   // };
 
