@@ -1,7 +1,6 @@
 "use client";
 import React, { FormEvent, useRef } from "react";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { useSearchParams } from "next/navigation";
 import { usePathname, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";

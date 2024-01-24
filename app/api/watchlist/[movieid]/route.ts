@@ -5,7 +5,7 @@ export async function DELETE(
 request: NextRequest,
 { params }: { params: { movieid: string } }
 ) {
-console.log(params.movieid);
+// console.log(params.movieid);
 
   const movie = await prisma.movieWatchList.findUnique({
 where: {

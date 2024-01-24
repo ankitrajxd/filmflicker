@@ -43,7 +43,7 @@ const DownloadMovie = ({ Imdb_id }: Props) => {
           }
         );
 
-        const magnetUrls = res.data.data.movies.flatMap((movie) =>
+        const magnetUrls = res.data.data.movies?.flatMap((movie) =>
           movie.torrents.map((torrent) => {
             const trackers = [
               "http://track.one:1234/announce",
@@ -79,18 +79,18 @@ const DownloadMovie = ({ Imdb_id }: Props) => {
     }
   };
 
-    return (
-      <div className="flex flex-wrap gap-4">
-        {links?.map((l, index) => (
-          <p className="" key={index}>
-            <Button variant={'link'} onClick={() => handleCopyToClipboard(l)}>
-              Link {index + 1}
-            </Button>
-            {/* <span>{l}</span> */}
-          </p>
-        ))}
-      </div>
-    );
+  return (
+    <div className="flex flex-wrap gap-4">
+      {links?.map((l, index) => (
+        <p className="" key={index}>
+          <Button variant={"link"} onClick={() => handleCopyToClipboard(l)}>
+            Link {index + 1}
+          </Button>
+          {/* <span>{l}</span> */}
+        </p>
+      ))}
+    </div>
+  );
 };
 
 export default DownloadMovie;

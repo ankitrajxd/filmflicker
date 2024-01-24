@@ -35,7 +35,12 @@ export default function RootLayout({
         <body className={`p-5 max-w-[1280px] mx-auto ${inter.className}`}>
           <AnimatedDiv>
             <FlareCursor />
-            <NextTopLoader color="#00A8B5" />
+            <NextTopLoader
+            showSpinner
+              color={"linear-gradient(26deg,#45caff 41%,#f41bff 47%)"}
+              template='<div class="bar" role="bar"><div class="peg"></div></div> 
+  <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+            />
             <ThemeProvider attribute="class" defaultTheme="dark">
               <NavBar />
               {children}

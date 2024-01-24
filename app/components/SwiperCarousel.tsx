@@ -20,8 +20,6 @@ const SwiperCarousel = ({ movies }: Props) => {
       className="my-4 mt-1 border-2 p-4 rounded-xl"
       spaceBetween={0}
       slidesPerView={3.5}
-      onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => console.log(swiper)}
       autoplay={{
         delay: 2200,
       }}

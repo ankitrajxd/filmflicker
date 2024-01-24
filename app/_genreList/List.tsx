@@ -1,19 +1,22 @@
 "use client";
-import React from "react";
+import { useRef } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Genre } from "../services/fetchMovies";
+import LoadingBar from "react-top-loading-bar";
 
 interface Props {
   data: Genre[];
   selectedGenre?: string;
 }
 const List = ({ data, selectedGenre }: Props) => {
+  const ref = useRef(null);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
   const onSubmit = (genre: Genre) => {
     const params = new URLSearchParams(searchParams);
+
     if (genre.id) {
       params.set("genre", genre.id.toString());
       params.set("genreName", genre.name);

@@ -25,7 +25,7 @@ const NavBar = () => {
         </MenubarMenu>
         <MenubarMenu>
           <MenubarTrigger>
-            <Link href={"/anime"}>TV Shows</Link>
+            <Link href={"/anime"}>Anime</Link>
           </MenubarTrigger>
         </MenubarMenu>
         <MenubarMenu>
