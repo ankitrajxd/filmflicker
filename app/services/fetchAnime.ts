@@ -14,7 +14,7 @@ interface HomePageResponse {
 
 export const fetchTrendingAnime = async () => {
   const res = await axios.get<HomePageResponse>(
-    "https://animeapi-wt9k.onrender.com/anime/home"
+    "https://aniwatch-api-tawny.vercel.app/anime/home"
   );
 
   return res.data.trendingAnimes;
@@ -42,7 +42,7 @@ interface AnimeResponse {
 
 export const searchAnime = async (query: string) => {
   const res = await axios.get<AnimeResponse>(
-    `https://animeapi-wt9k.onrender.com/anime/search?q=${query}`
+    `https://aniwatch-api-tawny.vercel.app/anime/search?q=${query}`
   );
 
   return res.data.animes;

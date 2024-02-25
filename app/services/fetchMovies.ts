@@ -53,12 +53,12 @@ interface fetchMovieVideosResponse {
   results: MovieVideo[];
 }
 
-const header = {
+export const header = {
   accept: "application/json",
   Authorization: `Bearer ${process.env.TMDB_API_KEY!}`,
 };
 
-const endpoint = "https://api.themoviedb.org/3";
+export const endpoint = "https://api.themoviedb.org/3";
 
 // fetching movies
 
@@ -312,13 +312,15 @@ export const GetMovieReviews = async (movieId: number) => {
 };
 
 // getting credits of a movie
+export interface Cast {
+  name: string;
+  profile_path: string;
+  id: number;
+  character: string;
+}
+
 interface fetchCreditsResponse {
-  cast: Array<{
-    name: string;
-    profile_path: string;
-    cast_id: number;
-    character: string;
-  }>;
+  cast: Cast[];
 }
 
 export const GetMovieCredits = async (movieId: number) => {

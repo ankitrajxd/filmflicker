@@ -7,6 +7,7 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Movie } from "../services/fetchMovies";
 import AddToWatch from "../AddToWatch";
+import Image from "next/image";
 
 interface Props {
   movie: Movie;
@@ -21,11 +22,13 @@ const MovieCard = ({ movie, className }: Props) => {
           style={{ overflow: "hidden" }}
           className="h-[180px] sm:h-full object-contain"
         >
-          <img
-            className="md:hover:scale-[1.125] transition-transform ease-in-out duration-300 rounded-md object-cover"
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-            alt="anime-img"
-          ></img>
+          <Link href={`/movies/${movie.id}`}>
+            <img
+              className="md:hover:scale-[1.125] transition-transform ease-in-out duration-300 rounded-md object-cover"
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt="anime-img"
+            ></img>
+          </Link>
         </CardHeader>
         <CardContent className="mt-2">
           <CardTitle className="text-base mb-3">

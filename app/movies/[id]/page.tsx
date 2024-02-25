@@ -18,6 +18,7 @@ import DownloadMovie from "./DownloadMovie";
 import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 import { FaArrowLeftLong } from "react-icons/fa6";
+import MovieCredits from "./MovieCredits";
 
 interface Props {
   params: { id: string };
@@ -85,7 +86,7 @@ const MovieDetailPage = async ({ params }: Props) => {
       </div>
 
       {/* Movie Credits */}
-      <div
+      {/* <div
         className={`flex flex-row overflow-x-scroll gap-5 mt-[4rem] ${styles.noScroll}`}
       >
         {MovieCast.map((cast) => (
@@ -102,9 +103,11 @@ const MovieDetailPage = async ({ params }: Props) => {
               {cast.character?.split("/")[0]}
             </p>
             {/* <p>{cast.cast_id}</p> */}
-          </div>
+      {/* </div>
         ))}
-      </div>
+        // </div> */}
+
+      <MovieCredits movieCast={MovieCast} />
 
       <div className="rounded-md overflow-hidden flex flex-col md:flex-row flex-wrap gap-3 my-8 ">
         {MovieVideos.map((v) => (
